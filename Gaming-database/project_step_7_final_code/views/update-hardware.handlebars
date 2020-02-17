@@ -1,0 +1,11 @@
+<html>
+<link rel="stylesheet" type="text/css" href="update-pages.css">
+<h1>Update {{hardware.hardware_platform}} {{hardware.hardware_game_cartridge}} {{hardware.hardware_controls}}:</h1>
+<form id="update-hardware" action="/hardware" method="post">
+    Platform: <input type="text" name="hardware_platform" value="{{hardware.hardware_platform}}"><br>
+    Game Cartridge: <input type="text" name="hardware_game_cartridge" value="{{hardware.hardware_game_cartridge}}"><br>
+    Controls: <input type="text" name="hardware_controls" value="{{hardware.hardware_controls}}"><br>
+    </select><br>
+</form>
+<button onclick="updateHardware({{hardware.id}})">Update</button>
+</html>

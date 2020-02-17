@@ -1,0 +1,17 @@
+<html>
+<link rel="stylesheet" type="text/css" href="update-pages.css">
+<h1>Update Audiences:</h1>
+<form id="update-audience" action="/audiences" method="post">
+    Minimum Age: <input type="number" name="audience_age_range_min" value="{{audience.audience_age_range_min}}"><br>
+    Maximum Age: <input type="number" name="audience_age_range_max" value="{{audience.audience_age_range_max}}"><br>
+    Audience Location (Country): <input type="text" name="audience_location_country" value="{{audience.audience_location_country}}"><br>
+    Audience Location (State): <input type="text" name="audience_location_state" value="{{audience.audience_location_state}}"><br>
+    Gender: <select name="audience_gender" id="game-selector"> 
+        {{#each gender}}
+        <option value="{{id}}">{{gender_name}}</option>
+        {{/each}}
+    </select><br>
+</form>
+<button onclick="updateAudience({{audience.id}})">Update</button>
+<script defer>selectGender({{audience.audience_gender}});</script>
+</html>

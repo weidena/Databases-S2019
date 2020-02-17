@@ -1,0 +1,46 @@
+<html>
+<link rel="stylesheet" type="text/css" href="games.css">
+<h3>Add new a new game play:</h3>
+	  <ul>
+    <li> <a href='/games'>Games</a></li>
+    <li> <a href='/audiences'>Audiences</a></li>
+    <li> <a href='/hardware'>Hardware</a></li>
+    <li> <a href='/game_play'>Game Play</a></li>
+  </ul>
+<form id="addgameplay" action="/game_play" method="post">
+    Camera View: <select name="game_play_camera"> 
+        {{#each camera}}
+        <option value="{{id}}">{{camera_view}}</option>
+        {{/each}}
+    </select><br>
+    Multiplayer Option: T <input type="radio" name="game_play_multiplayer" value="1">
+    F <input type="radio" name="game_play_multiplayer" value="0"><br>
+    Main Character: <input type="text" name="game_play_main_character"><br>
+    Multiple Worlds: T <input type="radio" name="game_play_worlds" value="1">
+    F <input type="radio" name="game_play_worlds" value="0"><br>
+    <input type="submit" value="Submit">
+ </form>
+<br/>
+
+<h3>Current game plays:</h3>
+<table>
+    <thead> 
+        <th>Camera View</th> 
+        <th>Multiplayer Option</th> 
+        <th>Main Character</th>
+        <th>Multiple Worlds</th>  
+    </thead> 
+    <tbody>
+        {{#each game_plays}} 
+        <tr> 
+            <td>{{game_play_camera}}</td> 
+            <td>{{game_play_multiplayer}}</td> 
+            <td>{{game_play_main_character}}</td> 
+            <td>{{game_play_worlds}}</td>
+            <td><button onclick="deleteGamePlay({{id}})">Delete</button></td>
+            <td><a href="/game_play/{{id}}">Update</a></td>
+        </tr> 
+        {{/each}} 
+    </tbody> 
+</table> 
+</html>

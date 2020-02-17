@@ -1,0 +1,58 @@
+<html>
+<link rel="stylesheet" type="text/css" href="audience.css">
+<h3>Add a new audience:</h3>
+  <ul>
+    <li> <a href="./games"target="_blank">Games</a></li>
+    <li> <a href="./audiences"target="_blank">Audiences</a></li>
+    <li> <a href="./hardware"target="_blank">Hardware</a></li>
+	<li> <a href="./game_play" target="_blank">Game Play</a></li>
+  </ul>
+<form id="addaudience" action="/audiences" method="post">
+    Minimum Age: <input type="number" name="audience_age_range_min"><br>
+    Maximum Age: <input type="number" name="audience_age_range_max"><br>
+    Location (Country): <input type="text" name="audience_location_country"><br>
+    Location (State): <input type="text" name="audience_location_state"><br>
+    Gender: <select name="audience_gender"> 
+        {{#each gender}}
+        <option value="{{id}}">{{gender_name}}</option>
+        {{/each}}
+    </select><br>
+    <input type="submit" value="Submit">
+ </form>
+<br/>
+
+<form id='filter_audiences' action='' method=''>
+<!--- this form does not submit directly, the button handles all the interaction with backend -->
+    <label> Filter by gender </label>
+    <select id='audience_gender_filter' name="audience_gender"> 
+        {{#each gender}}
+        <option value="{{id}}">{{gender_name}}</option>
+        {{/each}}
+    </select><br>
+    <input type="button" value="Filter" onclick="filterAudiencesByGender()">
+</form>
+
+<h3>Current audiences:</h3>
+<table>
+    <thead> 
+        <th>Minimum Age</th> 
+        <th>Maximum Age</th> 
+        <th>Location (Country)</th>
+        <th>Location (State)</th>  
+        <th>Gender</th>  
+    </thead> 
+    <tbody>
+        {{#each audiences}} 
+        <tr> 
+            <td>{{audience_age_range_min}}</td> 
+            <td>{{audience_age_range_max}}</td> 
+            <td>{{audience_location_country}}</td> 
+            <td>{{audience_location_state}}</td>
+            <td>{{audience_gender}}</td>
+            <td><button onclick="deleteAudience({{id}})">Delete</button></td>
+            <td><a href="/audiences/{{id}}">Update</a></td>
+        </tr> 
+        {{/each}} 
+    </tbody> 
+</table> 
+</html>

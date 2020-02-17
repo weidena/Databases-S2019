@@ -1,0 +1,18 @@
+<html>
+<link rel="stylesheet" type="text/css" href="update-pages.css">
+<h1>Update Game Play:</h1>
+<form id="update-gameplay" action="/game_play" method="post">
+    Camera View: <select name="game_play_camera" id="gameplay-selector"> 
+        {{#each camera}}
+        <option value="{{id}}">{{camera_view}}</option>
+        {{/each}}
+    </select><br>
+    Multiplayer Option: T <input type="radio" name="game_play_multiplayer" value="{{game_play.game_play_multiplayer}}">
+    F <input type="radio" name="game_play_multiplayer" value="{{game_play.game_play_multiplayer}}"><br>
+    Main Character: <input type="text" name="game_play_main_character" value="{{game_play.game_play_main_character}}"><br>
+    Multiple Worlds: T <input type="radio" name="game_play_worlds" value="{{game_play.game_play_worlds}}">
+    F <input type="radio" name="game_play_worlds" value="{{game_play.game_play_worlds}}"><br>
+</form>
+<button onclick="updateGamePlay({{game_play.id}})">Update</button>
+<script defer>selectCamera({{game_play.game_play_camera}});</script>
+</html>

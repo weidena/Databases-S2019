@@ -1,0 +1,62 @@
+<html>
+<link rel="stylesheet" type="text/css" href="games.css">
+<h3>Add new games:</h3>
+	  <ul>
+    <li> <a href='/games'>Games</a></li>
+    <li> <a href='/audiences'>Audiences</a></li>
+    <li> <a href='/hardware'>Hardware</a></li>
+    <li> <a href='/game_play'>Game Play</a></li>
+  </ul>
+<form id="addgame" action="/games" method="post">
+    Title: <input type="text" name="game_name"><br>
+    Release Date: <input type="text" name="game_release_date"><br>
+    Genre: <select name="game_genre"> 
+        {{#each genre}}
+        <option value="{{id}}">{{genre_name}}</option>
+        {{/each}}
+    </select><br>
+    Rating: <input type="text" name="game_rating"><br>
+    <input type="submit" value="Submit">
+ </form>
+<br/>
+
+<form id='filter_games' action='' method=''>
+<!--- this form does not submit directly, the button handles all the interaction with backend -->
+    <label> Filter by genre </label>
+    <select id='game_genre_filter' name="game_genre"> 
+        {{#each genre}}
+        <option value="{{id}}">{{genre_name}}</option>
+        {{/each}}
+    </select><br>
+    <input type="button" value="Filter" onclick="filterGamesByGenre()">
+</form>
+
+<form id='search_games' action='' method=''>
+<!--- this form does not submit directly, the button handles all the interaction with backend -->
+    <label> Search games for titles starting with:</label>
+    <input id='title_search_string' type='text' name='title_search_string' value=''>
+    <input type="button" value="Search" onclick="searchGamesByTitle()">
+</form>
+
+<h3>Current games:</h3>
+<table>
+    <thead> 
+        <th>Title</th> 
+        <th>Release Date</th> 
+        <th>Genre</th>
+        <th>Rating</th>  
+    </thead> 
+    <tbody>
+        {{#each games}} 
+        <tr> 
+            <td>{{game_name}}</td> 
+            <td>{{game_release_date}}</td> 
+            <td>{{game_genre}}</td> 
+            <td>{{game_rating}}</td>
+            <td><button onclick="deleteGame({{id}})">Delete</button></td>
+            <td><a href="/games/{{id}}">Update</a></td>
+        </tr> 
+        {{/each}} 
+    </tbody> 
+</table> 
+</html>

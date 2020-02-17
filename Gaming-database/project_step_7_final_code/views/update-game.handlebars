@@ -1,0 +1,16 @@
+<html>
+<link rel="stylesheet" type="text/css" href="update-pages.css">
+<h1>Update {{game.game_name}}:</h1>
+<form id="update-game" action="/games" method="post">
+    Title: <input type="text" name="game_name" value="{{game.game_name}}"><br>
+    Release Date: <input type="text" name="game_release_date" value="{{game.game_release_date}}"><br>
+    Genre: <select name="game_genre" id="game-selector"> 
+        {{#each genre}}
+        <option value="{{id}}">{{genre_name}}</option>
+        {{/each}}
+    </select><br>
+    Rating: <input type="text" name="game_rating" value="{{game.game_rating}}"><br>
+</form>
+<button onclick="updateGame({{game.id}})">Update</button>
+<script defer>selectGenre({{game.game_genre}});</script>
+</html>

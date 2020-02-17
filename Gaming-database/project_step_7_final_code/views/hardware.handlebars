@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<link rel="stylesheet" type="text/css" href="hardware.css">
+  <head>
+
+
+<h3>Add a new hardware combo:</h3>
+	  <ul>
+    <li> <a href='/games'>Games</a></li>
+    <li> <a href='/audiences'>Audiences</a></li>
+    <li> <a href='/hardware'>Hardware</a></li>
+    <li> <a href='/game_play'>Game Play</a></li>
+  </ul>
+<form id="addhardware" action="/hardware" method="post">
+    Platform: <input type="text" name="hardware_platform"><br>
+    Game Cartridge: <input type="text" name="hardware_game_cartridge"><br>
+    Controls: <input type="text" name="hardware_controls"><br>
+    <input type="submit" value="Submit">
+ </form>
+<br/>
+
+<h3>Current hardware options:</h3>
+<table>
+    <thead> 
+        <th>Platform</th> 
+        <th>Game Cartridge</th> 
+        <th>Controls</th> 
+    </thead> 
+    <tbody>
+        {{#each hardwares}} 
+        <tr> 
+            <td>{{hardware_platform}}</td> 
+            <td>{{hardware_game_cartridge}}</td> 
+            <td>{{hardware_controls}}</td> 
+            <td><button onclick="deleteHardware({{id}})">Delete</button></td>
+            <td><a href="/hardware/{{id}}">Update</a></td>
+        </tr> 
+        {{/each}} 
+    </tbody> 
+</table> 
+</html>

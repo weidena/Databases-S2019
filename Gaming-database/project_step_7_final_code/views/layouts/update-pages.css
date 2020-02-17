@@ -1,0 +1,22 @@
+
+  body  {
+  background-image: url("update.jpg");
+  background-color: #cccccc;
+      height: 100%;
+   background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+h1{
+color: white;
+}
+#update-audience{
+color:white;
+}
+
+#update-hardware{
+color:white;
+}
+#update-game{
+color:white;
+}
